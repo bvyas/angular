@@ -1,0 +1,26 @@
+<div ng-controller='view1Controller'>
+    <form>
+       <h3>Add a new Order!</h3>
+        Customers : <select ng-model='newCustomer.name' ng-options = "customer.name for customer in customers"></select><br>
+        <br>Products: <select ng-model='newCustomer.product' ng-options = "customer.product for customer in customers"></select>
+        Quantity: <select ng-model='newCustomer.quantity' ng-options = "customer.quantity for customer in customers"></select>
+        Date Created: <input type='text' ng-model='newCustomer.date'>
+        <input type='submit' value='add new customer' ng-click='addCustomer()'>
+    </form> 
+Search Customers: <input type="text" ng-model="filter_name">
+ 
+<table>
+  <tr>
+  <th>Customer Name</th>
+  <th>Products</th>
+  <th>Quantity</th>
+  <th>Date Created</th>
+  </tr>
+    <tr ng-repeat="customer in customers | filter:filter_name | orderBy:'name'">
+        <td >{{ customer.name }}</td>
+         <td >{{ customer.product }}</td>
+         <td >{{ customer.quantity }}</td>
+         <td >{{ customer.date }}</td>
+    </tr> 
+    </table>
+  </div>
